@@ -6,11 +6,11 @@
         <p>Please fill out the following fields to login:</p>
         <form role="form" submit.delegate="submit()">
           <div class="form-group">
-            <label for="fn">First Name</label>
-            <input type="email" value.bind="email" class="form-control" id="fn" placeholder="john@example.com">
+            <label for="fn">Username or Email</label>
+            <input type="text" value.bind="username" class="form-control" id="fn" placeholder="john">
           </div>
           <div class="form-group">
-            <label for="ln">Last Name</label>
+            <label for="ln">Password</label>
             <input type="password" value.bind="password" class="form-control" id="ln" placeholder="password">
           </div>
           <button type="submit" class="btn btn-default">Submit</button>

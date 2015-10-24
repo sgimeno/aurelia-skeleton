@@ -1,9 +1,17 @@
 // import {computedFrom} from 'aurelia-framework';
+import {inject} from 'aurelia-framework';
+import {AuthService} from 'paulvanbladel/aurelia-auth';
+
+@inject(AuthService)
 
 export class Login {
   heading = 'Login';
-  email = '';
+  username = '';
   password = '';
+
+  constructor(auth){
+    this.auth = auth;
+  }
 
   // configureRouter(config, router) {
   //   config.map([
@@ -23,19 +31,22 @@ export class Login {
   // }
 
   submit() {
-    // this.previousValue = this.fullName;
-    alert(`Welcome, ${this.email}!`);
+    return this.auth.login(this.username, this.password)
+      .then(response => {
+        console.log("Login response: " + response);
+      })
+      .catch(error => {
+        this.loginError = error.response;
+      });
   }
 
-  canDeactivate() {
-    if (this.fullName !== this.previousValue) {
-      return confirm('Are you sure you want to leave?');
-    }
-  }
+  // canDeactivate() {
+  //
+  // }
 }
 
-export class UpperValueConverter {
-  toView(value) {
-    return value && value.toUpperCase();
-  }
-}
+// export class UpperValueConverter {
+//   toView(value) {
+//     return value && value.toUpperCase();
+//   }
+// }

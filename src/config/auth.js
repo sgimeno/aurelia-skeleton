@@ -1,4 +1,4 @@
-// src/auth/config.js
+// src/config/auth.js
 
 // Specific settings for our application's
 // authentication context. These will override

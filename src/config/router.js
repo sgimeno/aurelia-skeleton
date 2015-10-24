@@ -43,15 +43,33 @@ export default class {
           route: 'child-router',
           name: 'child-router',
           moduleId: 'views/child-router/child-router',
-          nav: false,
-          title: 'Child Router'
+          nav: true,
+          title: 'Child Router',
+          auth: true
         },
         {
           route: 'login',
           name: 'login',
           moduleId: 'views/login/login',
-          nav: true,
-          title: 'Login'
+          nav: false,
+          title: 'Login',
+          authRoute: true
+        },
+        {
+          route: 'signup',
+          name: 'signup',
+          moduleId: 'views/signup/signup',
+          nav: false,
+          title: 'Sign up',
+          authRoute: true
+        },
+        {
+          route: 'logout',
+          name: 'logout',
+          moduleId: 'views/logout/logout',
+          nav: false,
+          title: 'Logout',
+          authRoute: true
         }
       ]);
     };
