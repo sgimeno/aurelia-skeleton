@@ -1,6 +1,7 @@
 // import {computedFrom} from 'aurelia-framework';
 import {inject} from 'aurelia-framework';
 import {AuthService} from 'paulvanbladel/aurelia-auth';
+import {fromJSON} from '../../config/helpers';
 
 @inject(AuthService)
 
@@ -8,9 +9,11 @@ export class Login {
   heading = 'Login';
   username = '';
   password = '';
+  loginError = '';
 
   constructor(auth){
     this.auth = auth;
+    // this.fromJSON = fromJSON;
   }
 
   // configureRouter(config, router) {
@@ -37,11 +40,12 @@ export class Login {
     };
 
     return this.auth.login(userInfo)
-      .then(response => {
-        console.log("Login response: " + response);
+      .then(resp => {
+        console.log("Login resp: ", fromJSON(resp.response), resp);
       })
       .catch(error => {
-        this.loginError = error.response;
+        this.loginError = fromJSON(error.response).message;
+        console.log("Login error: ", fromJSON(error.response), error);
       });
   }
 
