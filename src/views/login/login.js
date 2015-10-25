@@ -31,7 +31,12 @@ export class Login {
   // }
 
   submit() {
-    return this.auth.login(this.username, this.password)
+    var userInfo = {
+      username: this.username,
+      password: this.password
+    };
+
+    return this.auth.login(userInfo)
       .then(response => {
         console.log("Login response: " + response);
       })
