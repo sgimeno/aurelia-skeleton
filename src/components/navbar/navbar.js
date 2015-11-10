@@ -11,21 +11,21 @@ export class NavBar {
 
   constructor(auth) {
     this.auth = auth;
-  };
+  }
 
   // We can check if the user is authenticated
   // to conditionally hide or show nav bar items
   get isAuthenticated() {
     return this.auth.isAuthenticated();
-  };
+  }
 }
 
 export class AuthFilterValueConverter {
-  toView(routes, isAuthenticated){
-      console.log(isAuthenticated);
-      if(isAuthenticated)
-          return routes;
+  toView(routes, isAuthenticated) {
+    if (isAuthenticated) {
+      return routes;
+    }
 
-      return routes.filter(r => !r.config.auth);
+    return routes.filter(r => !r.config.auth);
   }
 }

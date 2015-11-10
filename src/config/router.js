@@ -10,10 +10,10 @@ export default class {
 
   constructor(router) {
     this.router = router;
-  };
+  }
 
   configure() {
-    var appRouterConfig = function(config) {
+    let appRouterConfig = function(config) {
       config.title = 'Aurelia';
 
       // Here we hook into the authorize extensibility point
@@ -76,5 +76,5 @@ export default class {
 
     // The router is configured with what we specify in the appRouterConfig
     this.router.configure(appRouterConfig);
-  };
+  }
 }

@@ -1,28 +1,18 @@
 // import {computedFrom} from 'aurelia-framework';
 import {inject} from 'aurelia-framework';
 import {AuthService} from 'paulvanbladel/aurelia-auth';
-import {fromJSON} from '../../config/helpers';
 
+//TODO: ask about Aurelia injection of functions {fromJSON}
 @inject(AuthService)
-
 export class Login {
   heading = 'Login';
   username = '';
   password = '';
   loginError = '';
 
-  constructor(auth){
+  constructor(auth) {
     this.auth = auth;
-    // this.fromJSON = fromJSON;
   }
-
-  // configureRouter(config, router) {
-  //   config.map([
-  //     { route: ['', 'users'], name: 'users', moduleId: 'views/users/users', nav: true, title: 'Github Users' }
-  //   ]);
-  //
-  //   this.router = router;
-  // }
 
   //Getters can't be directly observed, so they must be dirty checked.
   //However, if you tell Aurelia the dependencies, it no longer needs to dirty check the property.
@@ -34,24 +24,20 @@ export class Login {
   // }
 
   submit() {
-    var userInfo = {
+    let userInfo = {
       username: this.username,
       password: this.password
     };
 
     return this.auth.login(userInfo)
       .then(resp => {
-        console.log("Login resp: ", fromJSON(resp.response), resp);
+        console.log('Login resp: ', resp);
       })
       .catch(error => {
-        this.loginError = fromJSON(error.response).message;
-        console.log("Login error: ", fromJSON(error.response), error);
+        this.loginError = error;
+        console.log('Login error: ', error);
       });
   }
-
-  // canDeactivate() {
-  //
-  // }
 }
 
 // export class UpperValueConverter {
